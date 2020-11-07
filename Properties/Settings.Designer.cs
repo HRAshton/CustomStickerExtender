@@ -49,5 +49,14 @@ namespace HRAshton.CustomStickerExtender.Properties {
                 return ((int)(this["BottomOffsetPx"]));
             }
         }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("#ECECEC")]
+        public global::System.Drawing.Color PastedStickerBackground {
+            get {
+                return ((global::System.Drawing.Color)(this["PastedStickerBackground"]));
+            }
+        }
     }
 }

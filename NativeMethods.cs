@@ -29,7 +29,7 @@ namespace HRAshton.CustomStickerExtender
         internal static extern int GetWindowTextLength(IntPtr hWnd);
         
         [DllImport("user32.dll")]
-        public static extern int GetWindowLong(IntPtr hWnd, Helpers.GWLParameter nIndex);
+        public static extern int GetWindowLong(IntPtr hWnd, WinApiHelpers.GWLParameter nIndex);
 
         //GetLastError- retrieves the last system error.
 
@@ -73,10 +73,10 @@ namespace HRAshton.CustomStickerExtender
         internal static extern int SetWindowLong32(HandleRef hWnd, int nIndex, int dwNewLong);
 
         [DllImport("user32.dll", EntryPoint = "SetWindowLong")]
-        internal static extern int SetWindowLong32(IntPtr windowHandle, Helpers.GWLParameter nIndex, int dwNewLong);
+        internal static extern int SetWindowLong32(IntPtr windowHandle, WinApiHelpers.GWLParameter nIndex, int dwNewLong);
 
         [DllImport("user32.dll", EntryPoint = "SetWindowLongPtr")]
-        internal static extern IntPtr SetWindowLongPtr64(IntPtr windowHandle, Helpers.GWLParameter nIndex, IntPtr dwNewLong);
+        internal static extern IntPtr SetWindowLongPtr64(IntPtr windowHandle, WinApiHelpers.GWLParameter nIndex, IntPtr dwNewLong);
 
         [DllImport("user32.dll", EntryPoint = "SetWindowLongPtr")]
         internal static extern IntPtr SetWindowLongPtr64(HandleRef hWnd, int nIndex, IntPtr dwNewLong);

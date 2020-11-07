@@ -39,6 +39,7 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
@@ -57,7 +58,8 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="Helpers.cs" />
+    <Compile Include="ImageHelper.cs" />
+    <Compile Include="WinApiHelpers.cs" />
     <Compile Include="HoverControl.xaml.cs">
       <DependentUpon>HoverControl.xaml</DependentUpon>
     </Compile>
@@ -109,6 +111,11 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Pictures\button.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Pictures\sticker.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

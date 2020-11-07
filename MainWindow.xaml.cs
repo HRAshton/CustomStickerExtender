@@ -25,13 +25,13 @@ namespace HRAshton.CustomStickerExtender
 		{
 			base.OnSourceInitialized(e);
 
-			Helpers.SetNoActivate(this);
+			WinApiHelpers.SetNoActivate(this);
 		}  
 		
 		private void SetStickerbarToConnect(object _ = null)
 		{
-			var targetWnd = Helpers.GetForegroundWindow();
-			var title = Helpers.GetWindowText(targetWnd);
+			var targetWnd = WinApiHelpers.GetForegroundWindow();
+			var title = WinApiHelpers.GetWindowText(targetWnd);
 			if (title != Settings.Default.TargetWindowTitle)
 			{
 				if (Visibility == Visibility.Visible)
@@ -45,7 +45,7 @@ namespace HRAshton.CustomStickerExtender
 				return;
 			}
 
-			var pos = Helpers.GetWindowPosition(targetWnd);
+			var pos = WinApiHelpers.GetWindowPosition(targetWnd);
 
 			Dispatcher.Invoke(new Action(() =>
 			{

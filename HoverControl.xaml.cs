@@ -1,53 +1,65 @@
 ﻿using System;
-using System.Collections.Specialized;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Forms;
+using System.Windows.Input;
 using System.Windows.Media.Imaging;
-using Clipboard = System.Windows.Clipboard;
-using MouseEventArgs = System.Windows.Input.MouseEventArgs;
+using HRAshton.CustomStickerExtender.Properties;
+using SendKeys = System.Windows.Forms.SendKeys;
 
 namespace HRAshton.CustomStickerExtender
 {
-    /// <summary>
-    /// Interaction logic for HoverControl.xaml
-    /// </summary>
-    public partial class HoverControl : Window
-    {
-        public HoverControl()
-        {
-            InitializeComponent();
-            DataContext = new StickersViewModel();
-        }
+	/// <summary>
+	/// Interaction logic for HoverControl.xaml
+	/// </summary>
+	public partial class HoverControl : Window
+	{
+		public HoverControl()
+		{
+			InitializeComponent();
+			DataContext = new StickersViewModel();
+		}
 
-        protected override void OnSourceInitialized(EventArgs e)
-        {
-            base.OnSourceInitialized(e);
+		protected override void OnSourceInitialized(EventArgs e)
+		{
+			base.OnSourceInitialized(e);
 
-            Helpers.SetNoActivate(this);
-        }
+			WinApiHelpers.SetNoActivate(this);
+		}
 
-        protected override void OnMouseLeave(MouseEventArgs e)
-        {
-            Close();
-        }
-        
-        private void ButtonBase_OnClick(object sender, RoutedEventArgs e)
-        {
-            var buf = Clipboard.GetDataObject();
+		protected override void OnMouseLeave(MouseEventArgs e)
+		{
+			Close();
+		}
 
-            var bitmapImage = (sender as Image)?.Source as BitmapImage;
-            if (bitmapImage != null)
-            {
-                Clipboard.SetFileDropList(new StringCollection { bitmapImage.UriSource.LocalPath });
-            }
-            
-            SendKeys.SendWait("^v");
+		private void ButtonBase_OnClick(object sender, RoutedEventArgs e)
+		{
+			if (!((sender as Image)?.Source is BitmapImage thumbImage))
+			{
+				return;
+			}
+			
+			var buf = Clipboard.GetDataObject();
+			
+			var target = GetBitmapImage(thumbImage.UriSource.LocalPath);
 
-            if (buf != null)
-            {
-                Clipboard.SetDataObject(buf);
-            }
-        }
-    }
+			Clipboard.SetImage(target);
+
+			SendKeys.SendWait("^v");
+
+			if (buf != null)
+			{
+				Clipboard.SetDataObject(buf);
+			}
+		}
+
+		private static BitmapImage GetBitmapImage(string fileName)
+		{
+			var origImage = System.Drawing.Image.FromFile(fileName);
+			var colorizedBmp = ImageHelper.Transparent2Color(origImage, Settings.Default.PastedStickerBackground);
+			var bitmapImage = ImageHelper.Image2BitmapImage(colorizedBmp);
+
+			return bitmapImage;
+		}
+		
+	}
 }

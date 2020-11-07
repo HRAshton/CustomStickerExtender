@@ -6,25 +6,8 @@ using System.Windows.Interop;
 
 namespace HRAshton.CustomStickerExtender
 {
-    public class Helpers
+    public static class WinApiHelpers
     {
-        public static IntPtr Find(string ModuleName, string MainWindowTitle)
-        {
-            //Search the window using Module and Title
-            IntPtr WndToFind = NativeMethods.FindWindow(ModuleName, MainWindowTitle);
-            if (WndToFind.Equals(IntPtr.Zero))
-            {
-                if (!string.IsNullOrEmpty(MainWindowTitle))
-                {
-                    //Search window using TItle only.
-                    WndToFind = NativeMethods.FindWindowByCaption(WndToFind, MainWindowTitle);
-                    if (WndToFind.Equals(IntPtr.Zero))
-                        return new IntPtr(0);
-                }
-            }
-            return WndToFind;
-        }
-
         public static IntPtr GetForegroundWindow()
         {
             IntPtr WndToFind = NativeMethods.GetForegroundWindow();
@@ -66,15 +49,6 @@ namespace HRAshton.CustomStickerExtender
             return winpos;
         }
 
-        public static IntPtr SetWindowLongPtr(HandleRef hWnd, int nIndex, IntPtr dwNewLong)
-        {
-            if (IntPtr.Size == 8) //Check if this window is 64bit
-            {
-                return NativeMethods.SetWindowLongPtr64(hWnd, nIndex, dwNewLong);
-            }
-            return new IntPtr(NativeMethods.SetWindowLong32(hWnd, nIndex, dwNewLong.ToInt32()));
-        }
-
         //Specifies the zero-based offset to the value to be set.
         //Valid values are in the range zero through the number of bytes of extra window memory, minus the size of an integer.
         public enum GWLParameter
@@ -86,15 +60,6 @@ namespace HRAshton.CustomStickerExtender
             GWL_STYLE = -16, // Set new window style
             GWL_USERDATA = -21, //Sets the user data associated with the window. This data is intended for use by the application that created the window. Its value is initially zero.
             GWL_WNDPROC = -4 //Sets a new address for the window procedure.
-        }
-
-        public static int SetWindowLong(IntPtr windowHandle, GWLParameter nIndex, int dwNewLong)
-        {
-            if (IntPtr.Size == 8) //Check if this window is 64bit
-            {
-                return (int)NativeMethods.SetWindowLongPtr64(windowHandle, nIndex, new IntPtr(dwNewLong));
-            }
-            return NativeMethods.SetWindowLong32(windowHandle, nIndex, dwNewLong);
         }
     }
 }
