@@ -72,9 +72,9 @@ namespace HRAshton.CustomStickerExtender
 			SubWindow = new HoverControl
 			{
 				Visibility = Visibility.Visible,
-				Top = Top + Height,
 			};
 			SubWindow.Left = Left - SubWindow.Width / 2;
+			SubWindow.Top = Top - SubWindow.Height - 5;
 		}
 	}
 }
