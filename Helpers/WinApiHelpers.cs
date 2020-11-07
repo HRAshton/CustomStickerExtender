@@ -4,7 +4,7 @@ using System.Text;
 using System.Windows;
 using System.Windows.Interop;
 
-namespace HRAshton.CustomStickerExtender
+namespace HRAshton.CustomStickerExtender.Helpers
 {
     public static class WinApiHelpers
     {

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Windows;
 using System.Windows.Input;
+using HRAshton.CustomStickerExtender.Helpers;
 using HRAshton.CustomStickerExtender.Properties;
 using Timer = System.Threading.Timer;
 

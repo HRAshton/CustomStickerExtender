@@ -3,7 +3,7 @@ using System.Runtime.InteropServices;
 using System.Text;
 using System.Windows.Forms;
 
-namespace HRAshton.CustomStickerExtender
+namespace HRAshton.CustomStickerExtender.Helpers
 {
     internal static class NativeMethods
     {

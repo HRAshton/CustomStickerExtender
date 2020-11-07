@@ -6,6 +6,6 @@
         ShowInTaskbar="False" ShowActivated="False"
         Background="Transparent" AllowsTransparency="True">
     <Grid>
-        <Image Source="/Pictures/button.png" Stretch="Fill" MouseEnter="UIElement_OnMouseEnter" />
+        <Image Source="/button.png" Stretch="Fill" MouseEnter="UIElement_OnMouseEnter" />
     </Grid>
 </Window>

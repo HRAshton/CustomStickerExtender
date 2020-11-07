@@ -3,7 +3,7 @@ using System.Globalization;
 using System.Windows.Data;
 using System.Windows.Media.Imaging;
 
-namespace HRAshton.CustomStickerExtender
+namespace HRAshton.CustomStickerExtender.Helpers
 {
 	public class ImagePathConverter : IValueConverter
 	{

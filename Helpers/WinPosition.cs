@@ -1,4 +1,4 @@
-﻿namespace HRAshton.CustomStickerExtender
+﻿namespace HRAshton.CustomStickerExtender.Helpers
 {
     public class WinPosition
     {

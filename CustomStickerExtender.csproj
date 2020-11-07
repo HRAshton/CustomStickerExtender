@@ -58,14 +58,14 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="ImageHelper.cs" />
-    <Compile Include="WinApiHelpers.cs" />
+    <Compile Include="Helpers\ImageHelper.cs" />
+    <Compile Include="Helpers\ImagePathConverter.cs" />
+    <Compile Include="Helpers\NativeMethods.cs" />
+    <Compile Include="Helpers\WinApiHelpers.cs" />
+    <Compile Include="Helpers\WinPosition.cs" />
     <Compile Include="HoverControl.xaml.cs">
       <DependentUpon>HoverControl.xaml</DependentUpon>
     </Compile>
-    <Compile Include="ImagePathConverter.cs" />
-    <Compile Include="StickersViewModel.cs" />
-    <Compile Include="WinPosition.cs" />
     <Page Include="HoverControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -84,7 +84,8 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="NativeMethods.cs" />
+    <Compile Include="Models\StickerPack.cs" />
+    <Compile Include="Models\StickersViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -110,12 +111,12 @@
     <AppDesigner Include="Properties\" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Pictures\button.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="Pictures\sticker.png">
+    <Content Include="Pictures\HelloWorld\gnu.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="button.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

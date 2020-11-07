@@ -3,6 +3,8 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Media.Imaging;
+using HRAshton.CustomStickerExtender.Helpers;
+using HRAshton.CustomStickerExtender.Models;
 using HRAshton.CustomStickerExtender.Properties;
 using SendKeys = System.Windows.Forms.SendKeys;
 

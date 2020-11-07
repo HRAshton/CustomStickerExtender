@@ -5,13 +5,15 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" mc:Ignorable="d"
         xmlns:system="clr-namespace:System;assembly=mscorlib"
         xmlns:local="clr-namespace:HRAshton.CustomStickerExtender"
+        xmlns:models="clr-namespace:HRAshton.CustomStickerExtender.Models"
+        xmlns:helpers="clr-namespace:HRAshton.CustomStickerExtender.Helpers"
         Title="HoverControl" Height="150" Width="219"
         WindowStyle="None" Background="Transparent" AllowsTransparency="True" Topmost="True"
-        d:DataContext="{d:DesignInstance local:StickersViewModel}"
+        d:DataContext="{d:DesignInstance models:StickersViewModel}"
         ShowInTaskbar="False" ShowActivated="False">
 
     <Window.Resources>
-        <local:ImagePathConverter x:Key="ImagePathConverter" />
+        <helpers:ImagePathConverter x:Key="ImagePathConverter" />
     </Window.Resources>
 
     <Border BorderBrush="#FF000000" BorderThickness="1" CornerRadius="8" Background="Aqua" Padding="5">
@@ -20,23 +22,38 @@
                 <!-- ReSharper disable once Xaml.RedundantResource -->
                 <system:Double x:Key="{x:Static SystemParameters.VerticalScrollBarWidthKey}">3</system:Double>
             </ScrollViewer.Resources>
-            
-            <ItemsControl ItemsSource="{Binding Images}">
 
+            <ItemsControl ItemsSource="{Binding StickerPacks}">
                 <ItemsControl.ItemTemplate>
                     <DataTemplate>
-                        <Image Source="{Binding Converter={StaticResource ImagePathConverter}}"
-                               Stretch="Fill" Width="64" Height="64"
-                               Margin="2" MouseDown="ButtonBase_OnClick" />
+                        <StackPanel>
+
+                            <TextBlock Text="{Binding Name}" />
+
+                            <ItemsControl ItemsSource="{Binding StickerFullNames}">
+
+                                <ItemsControl.ItemTemplate>
+                                    <DataTemplate>
+                                        <Image Source="{Binding Converter={StaticResource ImagePathConverter}}"
+                                               Stretch="Fill" Width="64" Height="64"
+                                               Margin="2" MouseDown="ButtonBase_OnClick" />
+                                    </DataTemplate>
+                                </ItemsControl.ItemTemplate>
+
+                                <ItemsControl.ItemsPanel>
+                                    <ItemsPanelTemplate>
+                                        <WrapPanel />
+                                    </ItemsPanelTemplate>
+                                </ItemsControl.ItemsPanel>
+
+                            </ItemsControl>
+
+                        </StackPanel>
+
                     </DataTemplate>
                 </ItemsControl.ItemTemplate>
 
-                <ItemsControl.ItemsPanel>
-                    <ItemsPanelTemplate>
-                        <WrapPanel />
-                    </ItemsPanelTemplate>
-                </ItemsControl.ItemsPanel>
-                
+
             </ItemsControl>
         </ScrollViewer>
     </Border>
