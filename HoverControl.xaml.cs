@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Threading;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
@@ -47,6 +48,8 @@ namespace HRAshton.CustomStickerExtender
 			Clipboard.SetImage(target);
 
 			SendKeys.SendWait("^v");
+			
+			Thread.Sleep(1000);
 
 			if (buf != null)
 			{
