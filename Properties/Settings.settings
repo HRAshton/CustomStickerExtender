@@ -16,6 +16,9 @@
     <Setting Name="PastedStickerBackground" Type="System.Drawing.Color" Scope="Application">
       <Value Profile="(Default)">#ECECEC</Value>
     </Setting>
+    <Setting Name="StickersPanelBackground" Type="System.Windows.Media.Color" Scope="Application">
+      <Value Profile="(Default)">#ECECEC</Value>
+    </Setting>
   </Settings>
 </SettingsFile>
 

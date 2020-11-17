@@ -16,7 +16,11 @@
         <helpers:ImagePathConverter x:Key="ImagePathConverter" />
     </Window.Resources>
 
-    <Border BorderBrush="#FF000000" BorderThickness="1" CornerRadius="8" Background="Aqua" Padding="5">
+    <Border BorderBrush="#FF000000" BorderThickness="1" CornerRadius="8" Padding="5">
+        <Border.Background>
+            <SolidColorBrush Color="{Binding StickerPanelBackground}"></SolidColorBrush>
+        </Border.Background>
+        
         <ScrollViewer>
             <ScrollViewer.Resources>
                 <!-- ReSharper disable once Xaml.RedundantResource -->

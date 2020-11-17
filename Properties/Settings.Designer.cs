@@ -58,5 +58,14 @@ namespace HRAshton.CustomStickerExtender.Properties {
                 return ((global::System.Drawing.Color)(this["PastedStickerBackground"]));
             }
         }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("#ECECEC")]
+        public global::System.Windows.Media.Color StickersPanelBackground {
+            get {
+                return ((global::System.Windows.Media.Color)(this["StickersPanelBackground"]));
+            }
+        }
     }
 }
