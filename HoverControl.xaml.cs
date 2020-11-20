@@ -59,9 +59,11 @@ namespace HRAshton.CustomStickerExtender
 
 		private static BitmapImage GetBitmapImage(string fileName)
 		{
-			var origImage = System.Drawing.Image.FromFile(fileName);
-			var colorizedBmp = ImageHelper.Transparent2Color(origImage, Settings.Default.PastedStickerBackground);
-			var bitmapImage = ImageHelper.Image2BitmapImage(colorizedBmp);
+			var image = System.Drawing.Image.FromFile(fileName);
+			
+			image = ImageHelper.ResizeImage(image, Settings.Default.StickerFrameSize);
+			image = ImageHelper.Transparent2Color(image, Settings.Default.PastedStickerBackground);
+			var bitmapImage = ImageHelper.Image2BitmapImage(image);
 
 			return bitmapImage;
 		}

@@ -19,6 +19,9 @@
     <Setting Name="StickersPanelBackground" Type="System.Windows.Media.Color" Scope="Application">
       <Value Profile="(Default)">#ECECEC</Value>
     </Setting>
+    <Setting Name="StickerFrameSize" Type="System.Drawing.Size" Scope="Application">
+      <Value Profile="(Default)">210, 210</Value>
+    </Setting>
   </Settings>
 </SettingsFile>
 

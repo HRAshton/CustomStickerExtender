@@ -67,5 +67,14 @@ namespace HRAshton.CustomStickerExtender.Properties {
                 return ((global::System.Windows.Media.Color)(this["StickersPanelBackground"]));
             }
         }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("210, 210")]
+        public global::System.Drawing.Size StickerFrameSize {
+            get {
+                return ((global::System.Drawing.Size)(this["StickerFrameSize"]));
+            }
+        }
     }
 }
