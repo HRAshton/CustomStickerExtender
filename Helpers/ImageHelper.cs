@@ -27,8 +27,8 @@ namespace HRAshton.CustomStickerExtender.Helpers
 
 		public static Bitmap ResizeImage(Image image, Size size)
 		{
-			var destImage = new Bitmap(size.Width, size.Height);
-
+			var targetSize = GetSize(size, image.Size);
+			var destImage = new Bitmap(targetSize.Width, targetSize.Height);
 			destImage.SetResolution(image.HorizontalResolution, image.VerticalResolution);
 
 			using var graphics = Graphics.FromImage(destImage);
@@ -38,20 +38,11 @@ namespace HRAshton.CustomStickerExtender.Helpers
 			graphics.SmoothingMode = SmoothingMode.HighQuality;
 			graphics.PixelOffsetMode = PixelOffsetMode.HighQuality;
 
-			var imageSize = GetSize(size, image.Size);
-			var destRect = new Rectangle(0, destImage.Height - imageSize.Height, imageSize.Width, imageSize.Height);
-			
-			using var wrapMode = new ImageAttributes();
-			wrapMode.SetWrapMode(WrapMode.Tile);
 			graphics.DrawImage(
-				image,
-				destRect,
-				0,
-				0,
-				image.Width,
-				image.Height,
-				GraphicsUnit.Pixel,
-				wrapMode);
+				image, 
+				new Rectangle(new Point(), destImage.Size), 
+				new Rectangle(new Point(),  image.Size),
+				GraphicsUnit.Pixel);
 
 			return destImage;
 		}
@@ -72,11 +63,11 @@ namespace HRAshton.CustomStickerExtender.Helpers
 		{
 			var wCoeff = (float)target.Width / source.Width;
 			var hCoeff = (float)target.Height / source.Height;
-			var minCoeff = Math.Min(wCoeff, hCoeff);
+			var maxCoeff = Math.Max(wCoeff, hCoeff);
 			
 			return new Size(
-				width: (int)(source.Width * minCoeff),
-				height: (int)(source.Height * minCoeff)
+				width: (int)(source.Width * maxCoeff),
+				height: (int)(source.Height * maxCoeff)
 			);
 		}
 	}
